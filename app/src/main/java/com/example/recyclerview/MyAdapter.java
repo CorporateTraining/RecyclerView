@@ -1,19 +1,27 @@
 package com.example.recyclerview;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.recyclerview.data.ItemData;
 
 import static com.example.recyclerview.data.TypeConstant.TYPE_HEADER;
 import static com.example.recyclerview.data.TypeConstant.TYPE_ITEM;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public Context context;
+
+    public MyAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -32,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        ItemData itemData = ItemData.initItemData().get(position)   ;
+        ItemData itemData = ItemData.initItemData().get(position);
         switch (itemData.type) {
             case 0:
                 return TYPE_ITEM;
@@ -51,9 +59,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ((HeaderViewHolder) holder).headerContent.setText(itemData.title);
                 break;
             case TYPE_ITEM:
+                Glide.with(context).load(itemData.avatar).into(((TextViewHolder) holder).imageUrl);
                 ((TextViewHolder) holder).title.setText(itemData.title);
                 ((TextViewHolder) holder).number.setText(String.valueOf(itemData.number));
                 ((TextViewHolder) holder).description.setText(itemData.description);
+
                 break;
         }
     }
@@ -66,6 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static class TextViewHolder extends RecyclerView.ViewHolder {
         public View itemView;
         public TextView title, number, description;
+        public ImageView imageUrl;
 
         public TextViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +84,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.title = itemView.findViewById(R.id.item_title);
             this.number = itemView.findViewById(R.id.item_number);
             this.description = itemView.findViewById(R.id.item_description);
+            this.imageUrl = itemView.findViewById(R.id.item_image);
         }
     }
 

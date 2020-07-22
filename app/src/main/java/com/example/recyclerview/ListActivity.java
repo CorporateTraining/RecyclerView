@@ -20,7 +20,7 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        myAdapter = new MyAdapter();
+        myAdapter = new MyAdapter(getApplicationContext());
         recyclerView.setAdapter(myAdapter);
     }
 }
