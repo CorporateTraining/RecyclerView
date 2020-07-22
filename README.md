@@ -1,2 +1,1 @@
-![1](./image/RecycleView.png)
-![2](./image/RecycleViewList.png)
+![1](./image/MultipleViewTypes.png)
