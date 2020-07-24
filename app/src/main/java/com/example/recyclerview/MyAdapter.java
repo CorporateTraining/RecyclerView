@@ -56,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (itemData.type) {
             case TYPE_HEADER:
                 HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
-                headerViewHolder.setHeaderContent(itemData.title);
+                headerViewHolder.setHeaderContentText(itemData.title);
                 break;
             case TYPE_ITEM:
                 TextViewHolder textViewHolder = (TextViewHolder) holder;
@@ -98,7 +98,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {
         public TextView headerContent;
 
-        public void setHeaderContent(String headerContent) {
+        public void setHeaderContentText(String headerContent) {
             this.headerContent.setText(headerContent);
         }
 
