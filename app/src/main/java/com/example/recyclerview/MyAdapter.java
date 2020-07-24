@@ -60,9 +60,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
             case TYPE_ITEM:
                 TextViewHolder textViewHolder = (TextViewHolder) holder;
-                textViewHolder.setTitle(itemData.title);
-                textViewHolder.setNumber(String.valueOf(itemData.number));
-                textViewHolder.setDescription(itemData.description);
+                textViewHolder.setTitleText(itemData.title);
+                textViewHolder.setNumberText(String.valueOf(itemData.number));
+                textViewHolder.setDescriptionText(itemData.description);
                 break;
         }
     }
@@ -75,15 +75,15 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static class TextViewHolder extends RecyclerView.ViewHolder {
         private TextView title, number, description;
 
-        public void setTitle(String title) {
+        public void setTitleText(String title) {
             this.title.setText(title);
         }
 
-        public void setNumber(String number) {
+        public void setNumberText(String number) {
             this.number.setText(number);
         }
 
-        public void setDescription(String  description) {
+        public void setDescriptionText(String  description) {
             this.description.setText(description);
         }
 
