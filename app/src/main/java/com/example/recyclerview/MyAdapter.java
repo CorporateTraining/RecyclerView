@@ -10,7 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recyclerview.data.ItemData;
 
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    private List<ItemData> itemDataList;
+
+    public MyAdapter(List<ItemData> itemDataList) {
+        this.itemDataList = itemDataList;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -20,15 +28,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-        holder.title.setText(ItemData.initItemData().get(position).title);
-        holder.number.setText(String.valueOf(ItemData.initItemData().get(position).number));
-        holder.description.setText(ItemData.initItemData().get(position).description);
+        ItemData itemData = itemDataList.get(position);
+        holder.title.setText(itemData.title);
+        holder.number.setText(String.valueOf(itemData.number));
+        holder.description.setText(itemData.description);
     }
 
     @Override
     public int getItemCount() {
-        return ItemData.initItemData().size();
+        return itemDataList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{

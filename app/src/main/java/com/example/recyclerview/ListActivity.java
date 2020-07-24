@@ -6,10 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.recyclerview.data.ItemData;
+
+import java.util.List;
+
 public class ListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private List<ItemData> itemDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +25,8 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        myAdapter = new MyAdapter();
+        itemDataList = ItemData.initItemData();
+        myAdapter = new MyAdapter(itemDataList);
         recyclerView.setAdapter(myAdapter);
     }
 }
