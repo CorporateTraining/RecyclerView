@@ -29,9 +29,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ItemData itemData = itemDataList.get(position);
-        holder.title.setText(itemData.title);
-        holder.number.setText(String.valueOf(itemData.number));
-        holder.description.setText(itemData.description);
+        holder.setTitleText(itemData.title);
+        holder.setNumberText(String.valueOf(itemData.number));
+        holder.setDescriptionText(itemData.description);
     }
 
     @Override
@@ -40,12 +40,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        public View itemView;
-        public TextView title, number, description;
+        private TextView title, number, description;
+
+        public void setTitleText(String title) {
+            this.title.setText(title);
+        }
+
+        public void setNumberText(String number) {
+            this.number.setText(number);
+        }
+
+        public void setDescriptionText(String description) {
+            this.description.setText(description);
+        }
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.itemView = itemView;
             this.title = itemView.findViewById(R.id.item_title);
             this.number = itemView.findViewById(R.id.item_number);
             this.description = itemView.findViewById(R.id.item_description);
